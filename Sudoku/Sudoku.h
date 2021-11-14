@@ -3,6 +3,7 @@
 #include <array>
 #include <string>
 #include <variant>
+#include <unordered_map>
 
 #include <z3++.h>
 

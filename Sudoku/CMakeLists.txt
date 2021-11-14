@@ -2,6 +2,8 @@
 
 find_package(OpenMP)
 
+set (CMAKE_CXX_STANDARD 17)
+
 add_executable (Sudoku "Sudoku.cpp" "main.cpp" "Sudoku.h" "Csv.cpp" "Csv.h" "Timer.h" "Timer.cpp")
 
 target_compile_options(Sudoku PRIVATE

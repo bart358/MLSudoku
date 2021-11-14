@@ -2,7 +2,5 @@
 
 project ("Sudoku")
 
-set (CMAKE_CXX_STANDARD 20)
-
 add_subdirectory ("z3")
 add_subdirectory ("Sudoku")

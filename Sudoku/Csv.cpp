@@ -33,7 +33,7 @@ Csv read_csv(const std::string& path, int limit)
 void to_csv(Csv csv, std::ofstream& file, int limit)
 {
 	limit = limit < 0 ? static_cast<int>(csv.size()) : limit;
-	for (auto i = 0; i < limit && i < csv.size(); i++)
+	for (auto i = 0; i < limit && i < static_cast<int>(csv.size()); i++)
 	{
 		for (auto j = 0; j < static_cast<int>(csv[i].size()) - 1; j++)
 			file << csv[i][j] << ",";
