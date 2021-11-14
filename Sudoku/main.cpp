@@ -1,13 +1,12 @@
-#include "Csv.h"
-#include "Timer.h"
-#include "Sudoku.h"
+#include <Csv.h>
+#include <Timer.h>
+#include <Sudoku.h>
 
-constexpr auto rows = 1000;
+constexpr auto rows = 100000;
 const std::string input_path = "../../../../sudoku-3m.csv";
 const std::string output_path = "../../../../result.csv";
 
 Row params = {
-	"final checks",
 	"arith-make-feasible",
 	"conflicts",
 	"decisions",
@@ -18,7 +17,6 @@ Row params = {
 	"propagations",
 	"binary propagations",
 	"added eqs",
-	"num checks",
 	"mk bool var",
 	"arith-lower",
 	"arith-upper",

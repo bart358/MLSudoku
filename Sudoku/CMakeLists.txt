@@ -4,6 +4,12 @@ find_package(OpenMP)
 
 add_executable (Sudoku "Sudoku.cpp" "main.cpp" "Sudoku.h" "Csv.cpp" "Csv.h" "Timer.h" "Timer.cpp")
 
+target_compile_options(Sudoku PRIVATE
+  $<$<CXX_COMPILER_ID:MSVC>:/W4 /WX>
+  $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -Wpedantic -Werror>
+)
+
+target_include_directories(Sudoku PRIVATE "${CMAKE_SOURCE_DIR}/Sudoku")
 target_include_directories(Sudoku PRIVATE "${CMAKE_SOURCE_DIR}/z3/src/api")
 target_include_directories(Sudoku PRIVATE "${CMAKE_SOURCE_DIR}/z3/src/api/c++")
 

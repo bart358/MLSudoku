@@ -5,7 +5,7 @@
 
 #include <z3++.h>
 
-#include "Sudoku.h"
+#include <Sudoku.h>
 
 std::string as_string::operator()(double x) const
 {
@@ -105,10 +105,10 @@ void Sudoku::solve()
 		auto m = s.get_model();
 		for (auto i = 0; i < 9; i++)
 			for (auto j = 0; j < 9; j++)
-				grid[i][j] = m.eval(cells[i][j]).as_int64();
+				grid[i][j] = static_cast<int>(m.eval(cells[i][j]).as_int64());
 
 		auto statistics = s.statistics();
-		for (auto i = 0; i < statistics.size(); i++)
+		for (auto i = 0; i < static_cast<int>(statistics.size()); i++)
 		{
 			Param param;
 			if (statistics.is_uint(i))

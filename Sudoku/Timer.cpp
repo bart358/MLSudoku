@@ -1,7 +1,7 @@
 #include <chrono>
 #include <iostream>
 
-#include "Timer.h"
+#include <Timer.h>
 
 Timer::Timer()
 	:start(std::chrono::high_resolution_clock::now())
