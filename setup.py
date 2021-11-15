@@ -34,7 +34,8 @@ def main() -> None:
     subprocess.run(cmd2)
 
     if args.run:
-        subprocess.run("./Sudoku", cwd=path / "Sudoku")
+        subprocess.call("./Sudoku", cwd=path / "Sudoku",
+                        stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 
 if __name__ == "__main__":
