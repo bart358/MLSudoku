@@ -2,7 +2,7 @@
 #include <Timer.h>
 #include <Sudoku.h>
 
-constexpr auto rows = 1000;
+constexpr auto rows = 100000;
 const std::string input_path = "../../../../sudoku-3m.csv";
 const std::string output_path = "../../../../result.csv";
 
