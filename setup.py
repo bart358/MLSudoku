@@ -38,10 +38,14 @@ def main() -> None:
     cmd1 = ["cmake", "-S", ".", "-B", build, "-G", args.generator]
     if not build.exists() or args.generate:
         build.mkdir(parents=True, exist_ok=True)
-        subprocess.run(cmd1)
+        p1 = subprocess.run(cmd1)
+        if p1.returncode:
+            return
 
     cmd2 = ["cmake", "--build", build]
-    subprocess.run(cmd2)
+    p2 = subprocess.run(cmd2)
+    if p2.returncode:
+        return
 
     cmd3 = ["kaggle", "datasets", "download", KAGGLE_PATH, "--unzip"]
     if not dataset.exists():
@@ -50,8 +54,10 @@ def main() -> None:
     if args.run:
         print("Computing results...")
         start = time.time()
-        subprocess.run("./Sudoku", cwd=build / "Sudoku")
+        p3 = subprocess.run("./Sudoku", cwd=build / "Sudoku")
         stop = time.time()
+        if p3.returncode:
+            return
         print(f"Elapsed time: {stop - start} seconds.")
 
 
