@@ -2,8 +2,11 @@
 
 #include <sstream>
 
-Csv read_csv(std::ifstream& file, int limit)
+Csv read_csv(std::ifstream &file, int limit)
 {
+	if (!file)
+		throw std::runtime_error("Could not open file");
+
 	Csv result;
 	std::string line;
 	auto counter = 0;
@@ -24,13 +27,13 @@ Csv read_csv(std::ifstream& file, int limit)
 	return result;
 }
 
-Csv read_csv(const std::string& path, int limit)
+Csv read_csv(const std::string &path, int limit)
 {
 	std::ifstream file(path);
 	return read_csv(file, limit);
 }
 
-void to_csv(Csv csv, std::ofstream& file, int limit)
+void to_csv(Csv csv, std::ofstream &file, int limit)
 {
 	limit = limit < 0 ? static_cast<int>(csv.size()) : limit;
 	for (auto i = 0; i < limit && i < static_cast<int>(csv.size()); i++)
@@ -42,7 +45,7 @@ void to_csv(Csv csv, std::ofstream& file, int limit)
 	file.close();
 }
 
-void to_csv(Csv csv, const std::string& path, int limit)
+void to_csv(Csv csv, const std::string &path, int limit)
 {
 	std::ofstream file(path);
 	return to_csv(csv, file, limit);
